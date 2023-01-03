@@ -1,8 +1,9 @@
 package com.demo.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.demo.pojo.Bill;
@@ -13,8 +14,14 @@ public class BillService {
 	@Autowired
 	BillRepository billRepository;
 	
-	public List<Bill> findAllBills() {
-		return billRepository.findAllBill();
+	@SuppressWarnings("unchecked")
+	public ResponseEntity<List<Bill>> findAllBills() {
+		List<Bill> billList = billRepository.findAllBill();
+		Bill bill = new Bill();
+		if(billList.isEmpty()) {
+			return new ResponseEntity(new Exception("Error").getMessage(),HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity(billList, HttpStatus.ACCEPTED);
 	}
 	public List<Bill> findAllByYear(int year) {
 		return billRepository.findAllByYear(year);

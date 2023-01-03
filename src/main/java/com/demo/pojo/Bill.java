@@ -75,10 +75,8 @@ public class Bill {
 		return "Bill [billId=" + billId + ", consumerId=" + consumerId + ", unitsConsumed=" + unitsConsumed + ", year="
 				+ year + ", month=" + month + ", totalAmount=" + totalAmount + ", password=" + password + "]";
 	}
-	public Bill(int billId, Consumer consumerId, int unitsConsumed, int year, String month, int totalAmount,
+	public Bill(Consumer consumerId, int unitsConsumed, int year, String month, int totalAmount,
 			String password) {
-		super();
-		this.billId = billId;
 		this.consumerId = consumerId;
 		this.unitsConsumed = unitsConsumed;
 		this.year = year;

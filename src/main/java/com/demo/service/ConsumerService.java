@@ -10,7 +10,9 @@ public class ConsumerService {
 	ConsumerRepository consumerRepository;
 	
 	public void updateByConsumerId(String name, String area,String city, String connectionType,int id) {
-		consumerRepository.updateByConsumerId(name, area, city, connectionType, id);
+		if(consumerRepository.existsById(id)) {
+			consumerRepository.updateByConsumerId(name, area, city, connectionType, id);
+		}
 	}
 	
 	public void deleteByConsumerId(int id) {
