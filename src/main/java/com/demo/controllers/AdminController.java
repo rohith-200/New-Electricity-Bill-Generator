@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.demo.exceptions.BillNotFoundException;
 import com.demo.pojo.Bill;
 import com.demo.service.BillService;
 import com.demo.service.ConsumerService;
@@ -27,7 +28,7 @@ public class AdminController {
 	ConsumerService consumerService;
 	
 	@GetMapping(value = "/admin/getAllBills")
-	public ResponseEntity<List<Bill>> getAllBills() {
+	public ResponseEntity<List<Bill>> getAllBills() throws BillNotFoundException {
 		return billService.findAllBills();
 	}
 	
