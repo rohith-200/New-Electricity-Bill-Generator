@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.demo.exceptions.BillNotFoundException;
 import com.demo.pojo.Bill;
 import com.demo.repo.BillRepository;
 
@@ -14,15 +15,15 @@ public class BillService {
 	@Autowired
 	BillRepository billRepository;
 	
-	@SuppressWarnings("unchecked")
-	public ResponseEntity<List<Bill>> findAllBills() {
+	public ResponseEntity<List<Bill>> findAllBills() throws BillNotFoundException {
 		List<Bill> billList = billRepository.findAllBill();
-		Bill bill = new Bill();
 		if(billList.isEmpty()) {
-			return new ResponseEntity(new Exception("Error").getMessage(),HttpStatus.BAD_REQUEST);
+//			return new ResponseEntity(new Exception("Error").getMessage(),HttpStatus.BAD_REQUEST);
+			throw new BillNotFoundException("No bills found");
 		}
-		return new ResponseEntity(billList, HttpStatus.ACCEPTED);
+		return new ResponseEntity<List<Bill>>(billList, HttpStatus.OK);
 	}
+	
 	public List<Bill> findAllByYear(int year) {
 		return billRepository.findAllByYear(year);
 	}
