@@ -19,7 +19,7 @@ public class Consumer {
 	private String area;
 	private String city;
 	private String connectionType;
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "consumerId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Bill> bills;
 	
 	

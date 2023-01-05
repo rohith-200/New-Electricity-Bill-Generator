@@ -56,6 +56,7 @@ public class ElectricityBillGeneratorApplication implements CommandLineRunner {
 //		}
 		
 		//consumerRepository.updateByConsumerId("rohith", "rkk", "chennai", "domestic", 5);
+//		consumerService.deleteByConsumerId(2);
 		
 	}
 

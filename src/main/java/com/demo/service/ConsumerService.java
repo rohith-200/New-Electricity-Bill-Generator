@@ -1,10 +1,9 @@
 package com.demo.service;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jdbc.repository.query.Modifying;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.demo.repo.ConsumerRepository;
 
 @Service
@@ -20,6 +19,7 @@ public class ConsumerService {
 		return false;	
 	}
 	
+	@Transactional
 	public boolean deleteByConsumerId(int id) {
 		if(consumerRepository.existsById(id)) {
 			consumerRepository.deleteById(id);
