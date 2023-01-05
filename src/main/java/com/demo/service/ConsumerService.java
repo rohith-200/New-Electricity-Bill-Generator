@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.demo.pojo.Consumer;
 import com.demo.repo.ConsumerRepository;
 
 @Service
@@ -26,5 +27,13 @@ public class ConsumerService {
 			return true;
 		}
 		return false;
+	}
+	
+	public Consumer validateConsumer(int id) {
+		return consumerRepository.validateConsumer(id);
+	}
+	
+	public boolean exitsByConsumerId(int id) {
+		return consumerRepository.existsById(id);
 	}
 }

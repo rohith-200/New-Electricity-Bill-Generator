@@ -14,14 +14,19 @@ public class Consumer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int consumerId;
-	
+	private String password;
 	private String consumerName;
 	private String area;
 	private String city;
 	private String connectionType;
 	@OneToMany(mappedBy = "consumerId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Bill> bills;
-	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 //	public List<Bill> getBills() {
 //		return bills;
@@ -60,19 +65,24 @@ public class Consumer {
 		this.connectionType = connectionType;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "Consumer [consumerId=" + consumerId + ", consumerName=" + consumerName + ", area=" + area + ", city="
-				+ city + ", connectionType=" + connectionType +"]";
+		return "Consumer [consumerId=" + consumerId + ", password=" + password + ", consumerName=" + consumerName
+				+ ", area=" + area + ", city=" + city + ", connectionType=" + connectionType + "]";
 	}
-	public Consumer(String consumerName, String area, String city, String connectionType) {
+	
+	
+	public Consumer(String password, String consumerName, String area, String city,
+			String connectionType) {
 		super();
-		//this.consumerId = consumerId;
+		
+		this.password = password;
 		this.consumerName = consumerName;
 		this.area = area;
 		this.city = city;
 		this.connectionType = connectionType;
-		//this.bills = bills;
+		
 	}
 	public Consumer() {
 		//super();

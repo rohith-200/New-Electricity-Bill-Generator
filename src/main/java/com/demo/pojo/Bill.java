@@ -27,14 +27,7 @@ public class Bill {
 	@Column(nullable = false)
 	private String month;
 	private int totalAmount;
-	private String password;
 	
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	public int getBillId() {
 		return billId;
 	}
@@ -75,16 +68,15 @@ public class Bill {
 	@Override
 	public String toString() {
 		return "Bill [billId=" + billId + ", consumerId=" + consumerId + ", unitsConsumed=" + unitsConsumed + ", year="
-				+ year + ", month=" + month + ", totalAmount=" + totalAmount + ", password=" + password + "]";
+				+ year + ", month=" + month + ", totalAmount=" + totalAmount + "]";
 	}
-	public Bill(Consumer consumerId, int unitsConsumed, int year, String month, int totalAmount,
-			String password) {
+	public Bill(Consumer consumerId, int unitsConsumed, int year, String month, int totalAmount) {
 		this.consumerId = consumerId;
 		this.unitsConsumed = unitsConsumed;
 		this.year = year;
 		this.month = month;
 		this.totalAmount = totalAmount;
-		this.password = password;
+		
 	}
 	public Bill() {
 		super();
