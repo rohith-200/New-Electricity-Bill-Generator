@@ -36,4 +36,9 @@ public class ConsumerService {
 	public boolean exitsByConsumerId(int id) {
 		return consumerRepository.existsById(id);
 	}
+
+	public Consumer save(Consumer c) {
+		// TODO Auto-generated method stub
+		return consumerRepository.save(c);
+	}
 }
